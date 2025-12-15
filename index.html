@@ -158,9 +158,7 @@
     <a href="#inicio">Inicio</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#contacto">Contacto</a>
-
-    <a href="https://drive.google.com/file/d/1jyu7GF8O1agh3hXV0DlRIc0vQBZe522C/view" 
-       target="_blank" class="btn-cv">
+    <a href="https://drive.google.com/file/d/1jyu7GF8O1agh3hXV0DlRIc0vQBZe522C/view" target="_blank" class="btn-cv">
         <i class="fas fa-user"></i> CV
     </a>
 </nav>
@@ -175,7 +173,7 @@
     <p>Desarrollador Junior | C# • SQL • .NET • Genexus • Java • HTML/CSS</p>
 
     <p>
-        Soy desarrollador junior con experiencia en C#, SQL y backend.
+        Soy técnico superior desarrollador de software con experiencia en C#, SQL y backend.
         Me gusta construir soluciones eficientes y aprender nuevas tecnologías.
     </p>
 </header>
@@ -184,37 +182,37 @@
     <h2>Proyectos</h2>
 
     <div class="proyecto proyecto-flex">
-        <img src="img/equipo.jpg" alt="Sistema de comunicación Servidor/Cliente en C#">
+        <img src="img/equipo.jpg">
         <div>
             <h3>Sistema de Comunicación Servidor / Cliente</h3>
-            <p>Sistema de comunicación empresarial con llamadas, mensajes y archivos.</p>
+            <p>Sistema de comunicación empresarial con llamadas, mensajes, juegos y archivos.</p>
             <a href="https://github.com/coti20/ProgramadeGestiondeServidorycliente" target="_blank">Ver repositorio</a>
         </div>
     </div>
 
     <div class="proyecto proyecto-flex">
-        <img src="img/fotoSistemaEscolar.jpg" alt="Sistema de Gestión Escolar">
+        <img src="img/fotoSistemaEscolar.jpg">
         <div>
             <h3>Sistema de Gestión Escolar</h3>
-            <p>Gestión de alumnos, calificaciones y reportes en C# y SQL.</p>
+            <p>Aplicación en C# y SQL Server para alumnos, notas y reportes.</p>
             <a href="https://github.com/coti20/SistemaEscuela" target="_blank">Ver repositorio</a>
         </div>
     </div>
 
     <div class="proyecto proyecto-flex">
-        <img src="img/genexus1.jpg" alt="Sistema Web híbrido con Genexus">
+        <img src="img/genexus1.jpg">
         <div>
             <h3>Sistema Web Híbrido</h3>
-            <p>Sistema administrativo desarrollado con Genexus.</p>
+            <p>Sistema administrativo desarrollado con Genexus y SQL Server.</p>
             <a href="https://github.com/coti20/M-quinas-de-cocer-en-Genexus" target="_blank">Ver repositorio</a>
         </div>
     </div>
 
     <div class="proyecto proyecto-flex">
-        <img src="img/cajero.jpg" alt="Sistema Cajero">
+        <img src="img/cajero.jpg">
         <div>
             <h3>Sistema Cajero</h3>
-            <p>Sistema de razonamiento y lógica.</p>
+            <p>Sistema de lógica y razonamiento.</p>
             <a href="https://github.com/coti20/Cajero-Autom-tico-simple-" target="_blank">Ver repositorio</a>
         </div>
     </div>
@@ -240,6 +238,7 @@
 <input type="range" id="audio-volume" min="0" max="100" value="50">
 
 <script>
+
 const audio = document.getElementById('bg-music');
 const icon = document.getElementById('audio-icon');
 const volume = document.getElementById('audio-volume');
@@ -249,7 +248,7 @@ audio.volume = 0.5;
 
 function startAudio() {
     if (!started) {
-        audio.play().catch(() => {});
+        audio.play().catch(()=>{});
         started = true;
     }
 }
@@ -264,6 +263,40 @@ volume.addEventListener('input', function () {
     startAudio();
     audio.volume = this.value / 100;
 });
+
+
+document.addEventListener('click', startAudio, { once: true });
+
+
+const canvas = document.getElementById('binary');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = ['0','1'];
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(canvas.height);
+
+function drawBinary() {
+    ctx.fillStyle = 'rgba(5,11,20,0.15)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#a1007e';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i]);
+        drops[i] -= fontSize;
+        if (drops[i] < 0 && Math.random() > 0.975) {
+            drops[i] = canvas.height;
+        }
+    }
+}
+
+setInterval(drawBinary, 50);
 </script>
 
 </body>
